@@ -1,15 +1,13 @@
 import 'priority.dart';
 import 'task.dart';
 
-/// Tâche urgente : priorité toujours forcée à [Priority.high] et
-/// affiche un avertissement si l'échéance est dépassée.
 class UrgentTask extends Task {
   UrgentTask({
     required super.id,
     required super.title,
     super.dueDate,
     super.done,
-  }) : super(priority: Priority.high);
+  }) : super(priority: Priority.high); // une urgence, c'est toujours "high", pas le choix
 
   @override
   String get type => 'urgent';

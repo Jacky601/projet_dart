@@ -5,7 +5,6 @@ import '../exceptions/task_exceptions.dart';
 import '../models/task.dart';
 import 'repository.dart';
 
-/// Dépôt de tâches persistées dans un fichier JSON local.
 class TaskRepository implements Repository<Task> {
   final File _file;
   final List<Task> _tasks = [];
@@ -50,7 +49,6 @@ class TaskRepository implements Repository<Task> {
     return null;
   }
 
-  /// Comme [getById] mais lève [TaskNotFoundException] si absent.
   Task requireById(String id) {
     final task = getById(id);
     if (task == null) {
@@ -85,7 +83,7 @@ class TaskRepository implements Repository<Task> {
     _save();
   }
 
-  /// Calcule le prochain id disponible (entier incrémental sous forme de chaîne).
+  // pas d'UUID ici, juste le plus grand id existant + 1 — suffisant pour un usage local
   String nextId() {
     var max = 0;
     for (final t in _tasks) {

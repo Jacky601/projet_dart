@@ -1,6 +1,5 @@
 import 'task.dart';
 
-/// Tâche standard, sans comportement particulier au-delà de [Task].
 class StandardTask extends Task {
   StandardTask({
     required super.id,

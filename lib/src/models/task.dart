@@ -4,8 +4,6 @@ import 'priority.dart';
 import 'standard_task.dart';
 import 'urgent_task.dart';
 
-/// Classe abstraite de base pour toute tâche.
-/// Implémente [JsonSerializable] (interface) et [Comparable] pour le tri par priorité.
 abstract class Task implements JsonSerializable, Comparable<Task> {
   final String id;
   String title;
@@ -21,11 +19,10 @@ abstract class Task implements JsonSerializable, Comparable<Task> {
     this.done = false,
   }) {
     if (title.trim().isEmpty) {
-      throw InvalidTaskException('Le titre ne peut pas être vide.');
+      throw InvalidTaskException('Titre vide, il faut mettre quelque chose.');
     }
   }
 
-  /// Discriminant utilisé pour la (dé)sérialisation JSON.
   String get type;
 
   void markDone() => done = true;
@@ -40,7 +37,7 @@ abstract class Task implements JsonSerializable, Comparable<Task> {
         'type': type,
       };
 
-  /// Tri par priorité décroissante (high avant low).
+  // ordre inversé exprès : on veut high en premier dans la liste triée
   @override
   int compareTo(Task other) => other.priority.index.compareTo(priority.index);
 

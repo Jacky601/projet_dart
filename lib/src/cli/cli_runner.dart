@@ -6,7 +6,6 @@ import '../models/standard_task.dart';
 import '../models/urgent_task.dart';
 import '../repository/task_repository.dart';
 
-/// Point d'orchestration des commandes CLI.
 class CliRunner {
   final TaskRepository repository;
 

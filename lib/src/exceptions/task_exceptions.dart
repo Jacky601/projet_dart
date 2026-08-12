@@ -1,4 +1,3 @@
-/// Exceptions personnalisées de l'application.
 class TaskNotFoundException implements Exception {
   final String message;
   TaskNotFoundException(this.message);
