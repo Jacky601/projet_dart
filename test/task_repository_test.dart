@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:task_cli/src/exceptions/task_exceptions.dart';
 import 'package:task_cli/src/models/priority.dart';
 import 'package:task_cli/src/models/standard_task.dart';
+import 'package:task_cli/src/models/task.dart';
+import 'package:task_cli/src/repository/repository.dart';
 import 'package:task_cli/src/repository/task_repository.dart';
 import 'package:test/test.dart';
 
@@ -62,5 +64,11 @@ void main() {
     repo.add(StandardTask(id: '2', title: 'haute', priority: Priority.high));
     final sorted = repo.sortedByPriority();
     expect(sorted.first.priority, Priority.high);
+  });
+
+  test('TaskRepository respecte le contrat générique Repository<Task>', () {
+    final Repository<Task> repo = TaskRepository(path);
+    repo.add(StandardTask(id: '1', title: 'Via interface', priority: Priority.medium));
+    expect(repo.getAll(), hasLength(1));
   });
 }

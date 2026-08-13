@@ -26,6 +26,9 @@ class TaskRepository implements Repository<Task> {
       throw StorageException('Fichier JSON corrompu (${_file.path}): ${e.message}');
     } on IOException catch (e) {
       throw StorageException('Impossible de lire ${_file.path}: $e');
+    } catch (e) {
+      // structure JSON inattendue (pas une liste, champ manquant, etc.)
+      throw StorageException('Fichier JSON invalide (${_file.path}): $e');
     }
   }
 

@@ -86,6 +86,9 @@ class CliRunner {
     }
 
     final urgent = args.contains('--urgent');
+    if (urgent && options.containsKey('priority')) {
+      print('Note: --priority est ignoré pour une tâche --urgent (toujours "high").');
+    }
     final id = repository.nextId();
     final task = urgent
         ? UrgentTask(id: id, title: title, dueDate: due)
