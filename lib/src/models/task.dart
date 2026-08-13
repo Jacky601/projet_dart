@@ -21,6 +21,7 @@ abstract class Task implements JsonSerializable, Comparable<Task> {
     if (title.trim().isEmpty) {
       throw InvalidTaskException('Titre vide, il faut mettre quelque chose.');
     }
+    title = title.trim();
   }
 
   String get type;

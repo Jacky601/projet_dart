@@ -68,7 +68,7 @@ class CliRunner {
         'Usage: add "<titre>" [--priority=low|medium|high] [--due=YYYY-MM-DD] [--urgent]',
       );
     }
-    final title = positional.first;
+    final title = positional.join(' '); // permet un titre sans guillemets (add Faire les courses)
     final options = _parseOptions(args);
     final priority = options.containsKey('priority')
         ? priorityFromString(options['priority']!)
